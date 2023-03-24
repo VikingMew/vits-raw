@@ -1,6 +1,6 @@
 import re
-from num_thai.thainumbers import NumThai
 
+from num_thai.thainumbers import NumThai
 
 num = NumThai()
 

@@ -1,7 +1,7 @@
 import re
+
 import cn2an
 import opencc
-
 
 converter = opencc.OpenCC('zaonhe')
 

@@ -1,4 +1,5 @@
 import argparse
+
 import text
 from utils import load_filepaths_and_text
 
