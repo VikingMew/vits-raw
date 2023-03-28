@@ -417,7 +417,7 @@ class DistributedBucketSampler(torch.utils.data.distributed.DistributedSampler):
         for i in range(len(self.buckets)):
             bucket = self.buckets[i]
             len_bucket = len(bucket)
-            logging.info(f"{len(self.bucket)},{len_bucket}")
+            logging.info(f"{len(self.buckets)},{len_bucket}")
             ids_bucket = indices[i]
             num_samples_bucket = self.num_samples_per_bucket[i]
 
