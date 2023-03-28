@@ -1,8 +1,17 @@
 import re
 
-from text.cantonese import cantonese_to_ipa
 from text.english import english_to_ipa2, english_to_lazy_ipa, english_to_lazy_ipa2
+from text.mandarin import (
+    chinese_to_bopomofo,
+    chinese_to_ipa,
+    chinese_to_ipa2,
+    chinese_to_lazy_ipa,
+    chinese_to_romaji,
+    latin_to_bopomofo,
+    number_to_chinese,
+)
 
+# from text.cantonese import cantonese_to_ipa
 # from text.japanese import (
 #     japanese_to_ipa,
 #     japanese_to_ipa2,
@@ -16,20 +25,9 @@ from text.english import english_to_ipa2, english_to_lazy_ipa, english_to_lazy_i
 #     latin_to_hangul,
 #     number_to_hangul,
 # )
-from text.mandarin import (
-    chinese_to_bopomofo,
-    chinese_to_ipa,
-    chinese_to_ipa2,
-    chinese_to_lazy_ipa,
-    chinese_to_romaji,
-    latin_to_bopomofo,
-    number_to_chinese,
-)
-
 # from text.ngu_dialect import ngu_dialect_to_ipa
 # from text.sanskrit import devanagari_to_ipa
 # from text.shanghainese import shanghainese_to_ipa
-
 # from text.thai import latin_to_thai, num_to_thai
 
 
