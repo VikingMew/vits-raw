@@ -71,6 +71,9 @@ def spectrogram_torch(y, n_fft, sampling_rate, hop_size, win_size, center=False)
         (int((n_fft - hop_size) / 2), int((n_fft - hop_size) / 2)),
         mode="reflect",
     )
+    logging.info(
+        f"mel:{y.shape}, {(int((n_fft - hop_size) / 2), int((n_fft - hop_size) / 2))} finish"
+    )
     y = y.squeeze(1)
 
     spec = torch.stft(
