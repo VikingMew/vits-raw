@@ -63,17 +63,17 @@ def spectrogram_torch(y, n_fft, sampling_rate, hop_size, win_size, center=False)
         hann_window[wnsize_dtype_device] = torch.hann_window(win_size).to(
             dtype=y.dtype, device=y.device
         )
-    logging.info(
-        f"mel:{y.unsqueeze(1).shape}, {(int((n_fft - hop_size) / 2), int((n_fft - hop_size) / 2))}"
-    )
+    # logging.info(
+    # f"mel:{y.unsqueeze(1).shape}, {(int((n_fft - hop_size) / 2), int((n_fft - hop_size) / 2))}"
+    # )
     y = torch.nn.functional.pad(
         y.unsqueeze(1),
         (int((n_fft - hop_size) / 2), int((n_fft - hop_size) / 2)),
         mode="reflect",
     )
-    logging.info(
-        f"mel:{y.unsqueeze(1).shape}, {(int((n_fft - hop_size) / 2), int((n_fft - hop_size) / 2))} finish"
-    )
+    # logging.info(
+    #     f"mel:{y.unsqueeze(1).shape}, {(int((n_fft - hop_size) / 2), int((n_fft - hop_size) / 2))} finish"
+    # )
     y = y.squeeze(1)
 
     spec = torch.stft(
