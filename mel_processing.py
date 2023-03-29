@@ -64,7 +64,7 @@ def spectrogram_torch(y, n_fft, sampling_rate, hop_size, win_size, center=False)
             dtype=y.dtype, device=y.device
         )
     logging.info(
-        f"mel:{y.shape}, {(int((n_fft - hop_size) / 2), int((n_fft - hop_size) / 2))}"
+        f"mel:{y.unsqueeze(1).shape}, {(int((n_fft - hop_size) / 2), int((n_fft - hop_size) / 2))}"
     )
     y = torch.nn.functional.pad(
         y.unsqueeze(1),
@@ -72,7 +72,7 @@ def spectrogram_torch(y, n_fft, sampling_rate, hop_size, win_size, center=False)
         mode="reflect",
     )
     logging.info(
-        f"mel:{y.shape}, {(int((n_fft - hop_size) / 2), int((n_fft - hop_size) / 2))} finish"
+        f"mel:{y.unsqueeze(1).shape}, {(int((n_fft - hop_size) / 2), int((n_fft - hop_size) / 2))} finish"
     )
     y = y.squeeze(1)
 
