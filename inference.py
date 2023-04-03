@@ -62,7 +62,7 @@ def main(model_path: str):
             )[0][0, 0]
             .data.cpu()
             .float()
-            .numpy()
+            # .numpy()
         )
     ipd.display(ipd.Audio(audio, rate=hps.data.sampling_rate, normalize=False))
     save_audio("nihao.wav", audio, hps.data.sampling_rate)
