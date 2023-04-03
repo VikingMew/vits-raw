@@ -46,7 +46,7 @@ def main(model_path: str):
 
     _ = utils.load_checkpoint(model_path, net_g, None)
 
-    stn_tst = get_text("我是许多，八岁", hps)
+    stn_tst = get_text("我是八岁", hps)
     with torch.no_grad():
         x_tst = stn_tst.cuda().unsqueeze(0)
         x_tst_lengths = torch.LongTensor([stn_tst.size(0)]).cuda()
@@ -58,7 +58,7 @@ def main(model_path: str):
                 sid=sid,
                 noise_scale=0.667,
                 noise_scale_w=0.8,
-                length_scale=1,
+                length_scale=1.2,
             )[0][0, 0]
             .data.cpu()
             .float()
