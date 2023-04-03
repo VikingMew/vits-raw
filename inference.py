@@ -32,7 +32,7 @@ def get_text(text, hps):
     return text_norm
 
 
-def main(model_path: str):
+def main(model_path: str, utterance: str, output: str):
     hps = utils.get_hparams_from_file("./configs/lidan_base.json")
 
     net_g = SynthesizerTrn(
@@ -46,7 +46,7 @@ def main(model_path: str):
 
     _ = utils.load_checkpoint(model_path, net_g, None)
 
-    stn_tst = get_text("我是八岁", hps)
+    stn_tst = get_text(utterance, hps)
     with torch.no_grad():
         x_tst = stn_tst.cuda().unsqueeze(0)
         x_tst_lengths = torch.LongTensor([stn_tst.size(0)]).cuda()
@@ -65,7 +65,7 @@ def main(model_path: str):
             # .numpy()
         )
     ipd.display(ipd.Audio(audio, rate=hps.data.sampling_rate, normalize=False))
-    save_audio("nihao.wav", audio, hps.data.sampling_rate)
+    save_audio(outuput, audio, hps.data.sampling_rate)
 
 
 def save_audio(path: str, tensor: torch.Tensor, sampling_rate: int = 16000):
