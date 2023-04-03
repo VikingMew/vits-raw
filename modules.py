@@ -1,15 +1,16 @@
 import copy
 import math
 
-import commons
 import numpy as np
 import scipy
 import torch
-from commons import get_padding, init_weights
 from torch import nn
 from torch.nn import AvgPool1d, Conv1d, Conv2d, ConvTranspose1d
 from torch.nn import functional as F
 from torch.nn.utils import remove_weight_norm, weight_norm
+
+import commons
+from commons import get_padding, init_weights
 from transforms import piecewise_rational_quadratic_transform
 
 LRELU_SLOPE = 0.1

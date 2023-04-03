@@ -5,24 +5,24 @@ import logging
 import math
 import os
 
-import commons
 import librosa
 import torch
 import torch.distributed as dist
 import torch.multiprocessing as mp
-import utils
-from data_utils import (DistributedBucketSampler, TextAudioCollate,
-                        TextAudioLoader)
-from losses import discriminator_loss, feature_loss, generator_loss, kl_loss
-from mel_processing import mel_spectrogram_torch, spec_to_mel_torch
-from models import MultiPeriodDiscriminator, SynthesizerTrn
-from text.symbols import symbols
 from torch import nn, optim
 from torch.cuda.amp import GradScaler, autocast
 from torch.nn import functional as F
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
+
+import commons
+import utils
+from data_utils import DistributedBucketSampler, TextAudioCollate, TextAudioLoader
+from losses import discriminator_loss, feature_loss, generator_loss, kl_loss
+from mel_processing import mel_spectrogram_torch, spec_to_mel_torch
+from models import MultiPeriodDiscriminator, SynthesizerTrn
+from text.symbols import symbols
 
 logging.getLogger('numba').setLevel(logging.WARNING)
 

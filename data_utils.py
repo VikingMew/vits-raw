@@ -3,10 +3,11 @@ import os
 import random
 import time
 
-import commons
 import numpy as np
 import torch
 import torch.utils.data
+
+import commons
 from mel_processing import spectrogram_torch
 from text import cleaned_text_to_sequence, text_to_sequence
 from utils import load_filepaths_and_text, load_wav_to_torch
