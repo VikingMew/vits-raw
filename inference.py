@@ -1,3 +1,4 @@
+import IPython.display as ipd
 import os
 import json
 import math
@@ -62,17 +63,17 @@ def main(model_path: str):
         )
     ipd.display(ipd.Audio(audio, rate=hps.data.sampling_rate, normalize=False))
 
-    dataset = TextAudioSpeakerLoader(hps.data.validation_files, hps.data)
-    collate_fn = TextAudioSpeakerCollate()
-    loader = DataLoader(
-        dataset,
-        num_workers=8,
-        shuffle=False,
-        batch_size=1,
-        pin_memory=True,
-        drop_last=True,
-        collate_fn=collate_fn,
-    )
+    # dataset = TextAudioSpeakerLoader(hps.data.validation_files, hps.data)
+    # collate_fn = TextAudioSpeakerCollate()
+    # loader = DataLoader(
+    #     dataset,
+    #     num_workers=8,
+    #     shuffle=False,
+    #     batch_size=1,
+    #     pin_memory=True,
+    #     drop_last=True,
+    #     collate_fn=collate_fn,
+    # )
     data_list = list(loader)
 
 
