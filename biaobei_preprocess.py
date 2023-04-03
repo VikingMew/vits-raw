@@ -18,9 +18,11 @@ def main(dir_path: str):
             file_id = compoents[0]
             raw_annotation = compoents[1]
             modified_annotation = re.sub("""#\d""", """""", raw_annotation)
-      		candidates.append(f"{wave_dir}/{file_id}.wav|1|{modified_annotation}")
-    with open("biaobei.filelist.txt","w") as w:
-    	for item in candidates:
-    		print(item, file=w)
+            candidates.append(f"{wave_dir}/{file_id}.wav|1|{modified_annotation}")
+    with open("biaobei.filelist.txt", "w") as w:
+        for item in candidates:
+            print(item, file=w)
+
+
 if __name__ == "__main__":
     typer.run(main)
