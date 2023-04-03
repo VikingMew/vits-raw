@@ -19,6 +19,7 @@ from models import SynthesizerTrn
 from text.symbols import symbols
 from text import text_to_sequence
 from scipy.io.wavfile import write
+import torchaudio
 
 
 def get_text(text, hps):
@@ -62,7 +63,11 @@ def main(model_path: str):
             .numpy()
         )
     ipd.display(ipd.Audio(audio, rate=hps.data.sampling_rate, normalize=False))
+    save_audio("nihao.wav", audio, hps.data.sampling_rate)
 
+
+def save_audio(path: str, tensor: torch.Tensor, sampling_rate: int = 16000):
+    torchaudio.save(path, tensor.unsqueeze(0), sampling_rate, bits_per_sample=16)
     # dataset = TextAudioSpeakerLoader(hps.data.validation_files, hps.data)
     # collate_fn = TextAudioSpeakerCollate()
     # loader = DataLoader(
