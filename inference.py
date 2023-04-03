@@ -74,7 +74,7 @@ def main(model_path: str):
     #     drop_last=True,
     #     collate_fn=collate_fn,
     # )
-    data_list = list(loader)
+    # data_list = list(loader)
 
 
 if __name__ == "__main__":
