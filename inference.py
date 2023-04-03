@@ -1,25 +1,27 @@
-import IPython.display as ipd
-import os
 import json
 import math
+import os
+
+import IPython.display as ipd
 import torch
+import torchaudio
+import typer
+from scipy.io.wavfile import write
 from torch import nn
 from torch.nn import functional as F
 from torch.utils.data import DataLoader
-import typer
+
 import commons
 import utils
 from data_utils import (
-    TextAudioLoader,
     TextAudioCollate,
-    TextAudioSpeakerLoader,
+    TextAudioLoader,
     TextAudioSpeakerCollate,
+    TextAudioSpeakerLoader,
 )
 from models import SynthesizerTrn
-from text.symbols import symbols
 from text import text_to_sequence
-from scipy.io.wavfile import write
-import torchaudio
+from text.symbols import symbols
 
 
 def get_text(text, hps):
