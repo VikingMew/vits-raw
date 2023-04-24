@@ -65,7 +65,7 @@ def main(model_path: str, output: str):
             # .numpy()
         )
     ipd.display(ipd.Audio(audio, rate=hps.data.sampling_rate, normalize=False))
-    save_audio(outuput, audio, hps.data.sampling_rate)
+    save_audio(output, audio, hps.data.sampling_rate)
 
 
 def save_audio(path: str, tensor: torch.Tensor, sampling_rate: int = 16000):
