@@ -32,7 +32,7 @@ def get_text(text, hps):
     return text_norm
 
 
-def main(model_path: str, utterance: str, output: str):
+def main(model_path: str, output: str):
     hps = utils.get_hparams_from_file("./configs/lidan_base.json")
 
     net_g = SynthesizerTrn(
@@ -45,7 +45,7 @@ def main(model_path: str, utterance: str, output: str):
     _ = net_g.eval()
 
     _ = utils.load_checkpoint(model_path, net_g, None)
-
+    utterance = "狗蹲在墙角"
     stn_tst = get_text(utterance, hps)
     with torch.no_grad():
         x_tst = stn_tst.cuda().unsqueeze(0)
