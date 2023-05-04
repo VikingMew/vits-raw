@@ -45,7 +45,7 @@ def main(model_path: str, output: str):
     _ = net_g.eval()
 
     _ = utils.load_checkpoint(model_path, net_g, None)
-    utterance = "我们八点有个会"
+    utterance = "我能吞下玻璃"
     stn_tst = get_text(utterance, hps)
     with torch.no_grad():
         x_tst = stn_tst.cuda().unsqueeze(0)
