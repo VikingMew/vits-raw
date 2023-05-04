@@ -14,8 +14,8 @@ import commons
 from datetime import datetime
 
 
-MODEL_PATH = ""
-OUTPUT_DIR = ""
+MODEL_PATH = "G_3363000.pth"
+OUTPUT_DIR = "output/"
 hps = utils.get_hparams_from_file("./configs/lidan_base.json")
 _ = utils.load_checkpoint(MODEL_PATH, net_g, None)
 
