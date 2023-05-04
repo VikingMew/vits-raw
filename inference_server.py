@@ -3,16 +3,17 @@ import hashlib
 import json
 import logging
 import os
+from datetime import datetime
 
 import torch
 import tornado
 import tornado.web
-import utils
-from text import text_to_sequence
-from models import SynthesizerTrn
-import commons
-from datetime import datetime
 
+import commons
+import utils
+from models import SynthesizerTrn
+from text import text_to_sequence
+from text.symbols import symbols
 
 MODEL_PATH = "G_3363000.pth"
 OUTPUT_DIR = "output/"
