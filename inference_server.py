@@ -31,6 +31,9 @@ net_g = SynthesizerTrn(
 _ = net_g.eval()
 _ = utils.load_checkpoint(MODEL_PATH, net_g, None)
 
+app_log = logging.getLogger("tornado.application")
+tornado.log.enable_pretty_logging()
+
 
 def get_text(text, hps):
     text_norm = text_to_sequence(text, hps.data.text_cleaners)
