@@ -53,7 +53,7 @@ def generate(utterance: str):
     with torch.no_grad():
         x_tst = stn_tst.cuda().unsqueeze(0)
         x_tst_lengths = torch.LongTensor([stn_tst.size(0)]).cuda()
-        sid = torch.LongTensor([0]).cuda()
+        sid = torch.LongTensor([1]).cuda()
         audio = (
             net_g.infer(
                 x_tst,
