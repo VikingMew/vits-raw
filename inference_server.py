@@ -53,7 +53,7 @@ def generate(utterance: str):
     with torch.no_grad():
         x_tst = stn_tst.cuda().unsqueeze(0)
         x_tst_lengths = torch.LongTensor([stn_tst.size(0)]).cuda()
-        sid = torch.LongTensor([0]).cuda()
+        sid = torch.LongTensor([1]).cuda()
         audio = (
             net_g.infer(
                 x_tst,
@@ -61,7 +61,7 @@ def generate(utterance: str):
                 sid=sid,
                 noise_scale=0.667,
                 noise_scale_w=0.8,
-                length_scale=1.2,
+                length_scale=1.1,
             )[0][0, 0]
             .data.cpu()
             .float()
@@ -80,7 +80,7 @@ class SoundHandler(tornado.web.RequestHandler):
         output, audio = generate(utterance)
         (rate, data) = wavfile.read(output)
         buffer = io.BytesIO()
-        wavfile.write(buffer, 16000, data)
+        wavfile.write(buffer, 22050, data)
         self.set_header("Content-Type", "audio/wav")
         self.set_header("Content-Length", str(len(buffer.getvalue())))
         self.write(buffer.getvalue())
