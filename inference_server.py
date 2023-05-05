@@ -1,15 +1,16 @@
 import asyncio
 import hashlib
+import io
 import json
 import logging
 import os
 from datetime import datetime
 
+import scipy.io.wavfile as wavfile
 import torch
+import torchaudio
 import tornado
 import tornado.web
-import torchaudio
-import scipy.io.wavfile as wavfile
 
 import commons
 import utils

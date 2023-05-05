@@ -1,7 +1,8 @@
 import os
-import sys
-import typer
 import re
+import sys
+
+import typer
 
 
 def main(dir_path: str):
