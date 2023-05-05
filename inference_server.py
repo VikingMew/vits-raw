@@ -78,8 +78,9 @@ class SoundHandler(tornado.web.RequestHandler):
     async def post(self):
         utterance = self.json_args["utterance"]
         output, audio = generate(utterance)
+        (rate, data) = wavfile.read(output)
         buffer = io.BytesIO()
-        wavfile.write(buffer, 16000, audio)
+        wavfile.write(buffer, 16000, data)
         self.set_header("Content-Type", "audio/wav")
         self.set_header("Content-Length", str(len(buffer.getvalue())))
         self.write(buffer.getvalue())
