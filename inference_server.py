@@ -9,6 +9,7 @@ import torch
 import tornado
 import tornado.web
 import torchaudio
+import scipy.io.wavfile as wavfile
 
 import commons
 import utils
@@ -62,7 +63,7 @@ def generate(utterance: str):
             .float()
         )
     save_audio(output, audio, hps.data.sampling_rate)
-    return (output, audio.numpy())
+    return (output, audio.unsqueeze(0).numpy())
 
 
 def save_audio(path: str, tensor: torch.Tensor, sampling_rate: int = 16000):
@@ -73,6 +74,11 @@ class SoundHandler(tornado.web.RequestHandler):
     async def post(self):
         utterance = self.json_args["utterance"]
         output, audio = generate(utterance)
+        buffer = io.BytesIO()
+        wavfile.write(buffer, 16000, audio)
+        self.set_header("Content-Type", "audio/wav")
+        self.set_header("Content-Length", str(len(buffer.getvalue())))
+        self.write(buffer.getvalue())
 
     async def prepare(self):
         if self.request.headers.get("Content-Type", "").startswith("application/json"):
